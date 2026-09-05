@@ -1,0 +1,47 @@
+workflows:
+  build-carstream-ipa:
+    name: Build CarStream iOS IPA
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build Unsigned IPA Archive using xcodebuild
+        script: |
+          set -e
+          
+          # Clean previous build artifacts
+          rm -rf build
+          mkdir -p build/Payload
+          
+          # Compile CarStream target using xcodebuild
+          xcodebuild -project "CarStream.xcodeproj" \
+                     -scheme "CarStream" \
+                     -configuration Release \
+                     -sdk iphoneos \
+                     -derivedDataPath build/DerivedData \
+                     CODE_SIGN_IDENTITY="" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     CODE_SIGNING_ALLOWED=NO \
+                     clean build
+
+          # Find compiled .app bundle dynamically
+          APP_PATH=$(find build -name "*.app" -type d | head -n 1)
+          
+          if [ -z "$APP_PATH" ]; then
+            echo "Searching system DerivedData for CarStream.app..."
+            APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "*.app" -type d | head -n 1)
+          fi
+
+          if [ -n "$APP_PATH" ]; then
+            echo "Found compiled app at: $APP_PATH"
+            cp -R "$APP_PATH" build/Payload/
+            cd build
+            zip -r CarStream.ipa Payload
+            echo "Successfully generated CarStream.ipa!"
+          else
+            echo "Error: CarStream.app bundle was not found."
+            exit 1
+          fi
+    artifacts:
+      - build/CarStream.ipa

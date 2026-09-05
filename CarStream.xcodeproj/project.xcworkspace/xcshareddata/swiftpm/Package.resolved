@@ -1,0 +1,24 @@
+{
+  "originHash" : "e493b7a8c71366218dc153bcd0fb08e15614ae511e2c08d7e612754b2ae87a37",
+  "pins" : [
+    {
+      "identity" : "ios-airplay-package",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thomasdye12/IOS-airplay-package.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "853e2f89083017eff0f821a3abd679b38103ce1c"
+      }
+    },
+    {
+      "identity" : "swifter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/httpswift/swifter.git",
+      "state" : {
+        "revision" : "9483a5d459b45c3ffd059f7b55f9638e268632fd",
+        "version" : "1.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}

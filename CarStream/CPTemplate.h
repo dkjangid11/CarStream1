@@ -37,16 +37,16 @@
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)internalLeadingBarButtons;
-- (id)internalTrailingBarButtons;
-- (id)leadingNavigationBarButtons;
+- (NSMutableArray *)internalLeadingBarButtons;
+- (NSMutableArray *)internalTrailingBarButtons;
+- (NSArray *)leadingNavigationBarButtons;
 - (void)setDeferredOperationQueue:(id)arg1;
-- (void)setInternalLeadingBarButtons:(id)arg1;
-- (void)setInternalTrailingBarButtons:(id)arg1;
-- (void)setLeadingNavigationBarButtons:(id)arg1;
+- (void)setInternalLeadingBarButtons:(NSMutableArray *)arg1;
+- (void)setInternalTrailingBarButtons:(NSMutableArray *)arg1;
+- (void)setLeadingNavigationBarButtons:(NSArray *)arg1;
 - (void)setTemplateDelegate:(id)arg1;
 - (void)setTemplateProvider:(id)arg1;
-- (void)setTrailingNavigationBarButtons:(id)arg1;
+- (void)setTrailingNavigationBarButtons:(NSArray *)arg1;
 - (void)setUserInfo:(id)arg1;
 - (id)templateDelegate;
 - (void)templateDidAppear:(id)arg1 animated:(bool)arg2;
@@ -54,7 +54,7 @@
 - (id)templateProvider;
 - (void)templateWillAppear:(id)arg1 animated:(bool)arg2;
 - (void)templateWillDisappear:(id)arg1 animated:(bool)arg2;
-- (id)trailingNavigationBarButtons;
+- (NSArray *)trailingNavigationBarButtons;
 - (id)userInfo;
 
 @end

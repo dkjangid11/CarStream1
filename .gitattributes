@@ -1,0 +1,7 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.cer binary
+*.car binary
+*.xcassets/** binary
